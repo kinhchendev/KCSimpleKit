@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint KCSimpOne.podspec' to ensure this is a
+#  Be sure to run `pod spec lint KCSimpleKit.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "KCSimpOne"
+  s.name         = "KCSimpleKit"
   s.version      = "0.0.1"
   s.summary      = "Swift framework with Macro and Extension"
 
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
    - Extension for String, Data, Image, Date, UIView
                    DESC
 
-  s.homepage     = "http://EXAMPLE/KCSimpOne"
+  s.homepage     = "https://github.com/kinhchendev/KCSimpleKit"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
