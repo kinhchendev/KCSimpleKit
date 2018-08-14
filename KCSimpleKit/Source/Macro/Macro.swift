@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Macro: NSObject {
+public class Macro: NSObject {
 // MARK: Timer
     public static func invalidateTimer(timer : inout Timer?) -> Void {
         if timer != nil {
@@ -31,14 +31,14 @@ class Macro: NSObject {
     }
     
 // MARK: Window
-    static let mainWindow : UIWindow? = UIApplication.shared.windows.first
+    public static let mainWindow : UIWindow? = UIApplication.shared.windows.first
     
 // MARK: Device
-    static let deviceIsIphone = (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone)
-    static let deviceIsIpad = (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
+    public static let deviceIsIphone = (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone)
+    public static let deviceIsIpad = (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
     
 // MARK: Resolution
-    static let isRetina = (UIScreen.main.responds(to: #selector(UIScreen.displayLink(withTarget:selector:))) && UIScreen.main.scale == 2)
+    public static let isRetina = (UIScreen.main.responds(to: #selector(UIScreen.displayLink(withTarget:selector:))) && UIScreen.main.scale == 2)
     
     public static func imageExtensionForRetina() -> String {
         if Macro.isRetina {
@@ -47,16 +47,16 @@ class Macro: NSObject {
         return ""
     }
     
-    static let isIphone_4_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 480)) < Double.ulpOfOne
-    static let isIphone_4_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 480)) < Double.ulpOfOne
-    static let isIphone_5_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 568)) < Double.ulpOfOne
-    static let isIphone_5_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 568)) < Double.ulpOfOne
-    static let isIphone_6_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 660)) < Double.ulpOfOne
-    static let isIphone_6_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 660)) < Double.ulpOfOne
-    static let isIphone_6plus_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 720)) < Double.ulpOfOne
-    static let isIphone_6plus_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 720)) < Double.ulpOfOne
-    static let isIphone_X_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 1218)) < Double.ulpOfOne
-    static let isIphone_X_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 1218)) < Double.ulpOfOne
+    public static let isIphone_4_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 480)) < Double.ulpOfOne
+    public static let isIphone_4_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 480)) < Double.ulpOfOne
+    public static let isIphone_5_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 568)) < Double.ulpOfOne
+    public static let isIphone_5_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 568)) < Double.ulpOfOne
+    public static let isIphone_6_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 660)) < Double.ulpOfOne
+    public static let isIphone_6_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 660)) < Double.ulpOfOne
+    public static let isIphone_6plus_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 720)) < Double.ulpOfOne
+    public static let isIphone_6plus_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 720)) < Double.ulpOfOne
+    public static let isIphone_X_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 1218)) < Double.ulpOfOne
+    public static let isIphone_X_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 1218)) < Double.ulpOfOne
     
     public static func DDV(ipadValue : CGFloat, iphoneValue : CGFloat) -> CGFloat {
         if Macro.deviceIsIpad {
