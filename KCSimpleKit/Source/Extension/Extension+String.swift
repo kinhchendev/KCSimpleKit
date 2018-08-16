@@ -93,6 +93,35 @@ public extension String {
         return html2AttributedString?.string ?? ""
     }
 }
+
+// MARK: Matching
+public extension String {
+    // Check regex matching
+    func isMatch(regex: String, options: NSRegularExpression.Options) -> Bool
+    {
+        do {
+            let exp = try NSRegularExpression(pattern: regex, options: options)
+            let matchCount = exp.numberOfMatches(in: self, options: [], range: NSMakeRange(0, self.count))
+            return matchCount > 0
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return false
+        }
+    }
+    
+    // Get matches
+    func getMatches(regex: String, options: NSRegularExpression.Options) -> [NSTextCheckingResult]
+    {
+        do {
+            let exp = try NSRegularExpression(pattern: regex, options: options)
+            let matches = exp.matches(in: self, options: [], range: NSMakeRange(0, self.count))
+            return matches as [NSTextCheckingResult]
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return []
+    }
+}
     
 // MARK: Other utils
 public extension String {

@@ -51,12 +51,12 @@ public class Macro: NSObject {
     public static let isIphone_4_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 480)) < Double.ulpOfOne
     public static let isIphone_5_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 568)) < Double.ulpOfOne
     public static let isIphone_5_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 568)) < Double.ulpOfOne
-    public static let isIphone_6_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 660)) < Double.ulpOfOne
-    public static let isIphone_6_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 660)) < Double.ulpOfOne
-    public static let isIphone_6plus_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 720)) < Double.ulpOfOne
-    public static let isIphone_6plus_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 720)) < Double.ulpOfOne
-    public static let isIphone_X_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 1218)) < Double.ulpOfOne
-    public static let isIphone_X_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 1218)) < Double.ulpOfOne
+    public static let isIphone_6_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 667)) < Double.ulpOfOne
+    public static let isIphone_6_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 667)) < Double.ulpOfOne
+    public static let isIphone_6plus_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 736)) < Double.ulpOfOne
+    public static let isIphone_6plus_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 736)) < Double.ulpOfOne
+    public static let isIphone_X_protrait : Bool = Double(fabs(UIScreen.main.bounds.size.height - 812)) < Double.ulpOfOne
+    public static let isIphone_X_landscape : Bool = Double(fabs(UIScreen.main.bounds.size.width - 812)) < Double.ulpOfOne
     
     public static func DDV(ipadValue : CGFloat, iphoneValue : CGFloat) -> CGFloat {
         if Macro.deviceIsIpad {
@@ -66,19 +66,23 @@ public class Macro: NSObject {
     }
     
     public static func DDDV(ipadValue : CGFloat,
+                            iphone_X_value : CGFloat,
                             iphone_6plus_value : CGFloat,
                             iphone_6_value : CGFloat,
                             iphone_3_5_Value : CGFloat,
                             iphone_4_Value : CGFloat) -> CGFloat {
         if Macro.deviceIsIphone {
-            if isIphone_6plus_protrait || isIphone_6plus_landscape {
+            if isIphone_X_protrait || isIphone_X_landscape {
+                return iphone_X_value
+            }
+            else if isIphone_6plus_protrait || isIphone_6plus_landscape {
                 return iphone_6plus_value
             } else if isIphone_6_protrait || isIphone_6_landscape {
                 return iphone_6_value
             } else if isIphone_5_protrait || isIphone_5_landscape {
-                return iphone_4_Value
-            } else {
                 return iphone_3_5_Value
+            } else {
+                return iphone_4_Value
             }
         }
         

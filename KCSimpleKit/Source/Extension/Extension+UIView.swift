@@ -75,18 +75,84 @@ public extension UIView {
         }
     }
     
-    // take screenshots of view
-    public var screenshot: UIImage? {
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
-        defer {
-            UIGraphicsEndImageContext()
+    // border color of view
+    @IBInspectable public var borderColor: UIColor? {
+        get {
+            guard let color = layer.borderColor else { return nil }
+            return UIColor(cgColor: color)
         }
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        layer.render(in: context)
-        return UIGraphicsGetImageFromCurrentImageContext()
+        set {
+            guard let color = newValue else {
+                layer.borderColor = nil
+                return
+            }
+            // Fix React-Native conflict issue
+            guard String(describing: type(of: color)) != "__NSCFType" else { return }
+            layer.borderColor = color.cgColor
+        }
     }
 
+    // border width of view
+    @IBInspectable public var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
     
+    // corner radius of view
+    @IBInspectable public var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.masksToBounds = true
+            layer.cornerRadius = abs(CGFloat(Int(newValue * 100)) / 100)
+        }
+    }
+    
+    // shadow color of view
+    @IBInspectable public var shadowColor: UIColor? {
+        get {
+            guard let color = layer.shadowColor else { return nil }
+            return UIColor(cgColor: color)
+        }
+        set {
+            layer.shadowColor = newValue?.cgColor
+        }
+    }
+    
+    // shadow offset of view
+    @IBInspectable public var shadowOffset: CGSize {
+        get {
+            return layer.shadowOffset
+        }
+        set {
+            layer.shadowOffset = newValue
+        }
+    }
+    
+    // shadow opacity of view
+    @IBInspectable public var shadowOpacity: Float {
+        get {
+            return layer.shadowOpacity
+        }
+        set {
+            layer.shadowOpacity = newValue
+        }
+    }
+    
+    // shadow radius of view
+    @IBInspectable public var shadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowRadius = newValue
+        }
+    }
 }
 
 // MARK: - Methods
@@ -103,6 +169,17 @@ public extension UIView {
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
         layer.mask = shape
+    }
+    
+    // take screenshots of view
+    public var screenshot: UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        layer.render(in: context)
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
 

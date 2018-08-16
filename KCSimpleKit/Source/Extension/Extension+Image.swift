@@ -50,6 +50,6 @@ public extension UIImage {
                 }
                 completion(nil)
             }
-            }.resume()
+        }.resume()
     }
 }
