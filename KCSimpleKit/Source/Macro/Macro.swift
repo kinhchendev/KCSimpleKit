@@ -30,6 +30,13 @@ public class Macro: NSObject {
                        alpha: 1.0)
     }
     
+    public static func colorFromHex(hexValue hex : Int, WithAlpha alpha : CGFloat) -> UIColor {
+        return UIColor(red: CGFloat((hex >> 16) & 0xFF) / 255.0,
+                       green: CGFloat((hex >> 8) & 0xFF) / 255.0,
+                       blue: CGFloat(hex & 0xFF) / 255.0,
+                       alpha: alpha)
+    }
+    
 // MARK: Window
     public static let mainWindow : UIWindow? = UIApplication.shared.windows.first
     

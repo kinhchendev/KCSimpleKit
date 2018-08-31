@@ -34,6 +34,9 @@ public extension String {
         let nsSt = self as NSString
         return nsSt.appendingPathExtension(ext)
     }
+    public func stringByRemoveCharacter(InSet set : CharacterSet) -> String {
+        return self.components(separatedBy: set).joined(separator: "")
+    }
 }
 
 // MARK: - Bounding
@@ -125,6 +128,19 @@ public extension String {
     
 // MARK: Other utils
 public extension String {
+    // Get string for sorting
+    var forSorting: String {
+        let simple = folding(options: [.diacriticInsensitive, .widthInsensitive, .caseInsensitive], locale: nil)
+        let nonAlphaNumeric = CharacterSet.alphanumerics.inverted
+        return simple.components(separatedBy: nonAlphaNumeric).joined(separator: "")
+    }
+    
+    // Remove diacritics (accent) from String
+    public func removeDiacritics() -> String {
+        let newStr = self.folding(options: .diacriticInsensitive, locale: .current)
+        return newStr
+    }
+    
     // Extract list of url in string
     public func extractURLs() -> [URL] {
         var urls : [URL] = []

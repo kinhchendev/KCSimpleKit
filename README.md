@@ -14,6 +14,6 @@ Macro:
 Extension:
  - String (Path, Bounding, Attribute, Encode, Decode, Other utils)
  - Data (html)
- - Image
- - Date
+ - Image (from URL, from Base64, mask with color)
+ - Date (start of day, end of day, to string with format)
  - UIView (Properties, Methods)
