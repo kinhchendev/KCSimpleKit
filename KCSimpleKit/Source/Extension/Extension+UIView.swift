@@ -14,9 +14,9 @@ import UIKit
 #if !os(watchOS)
 
 // MARK: - Properties
-public extension UIView {
+@objc public extension UIView {
     // height of view
-    public var height: CGFloat {
+    @objc public var height: CGFloat {
         get {
             return frame.size.height
         }
@@ -26,7 +26,7 @@ public extension UIView {
     }
     
     // width of view
-    public var width: CGFloat {
+    @objc public var width: CGFloat {
         get {
             return frame.size.width
         }
@@ -36,7 +36,7 @@ public extension UIView {
     }
     
     // top of view
-    public var top: CGFloat {
+    @objc public var top: CGFloat {
         get {
             return frame.origin.y
         }
@@ -46,7 +46,7 @@ public extension UIView {
     }
     
     // left of view
-    public var left: CGFloat {
+    @objc public var left: CGFloat {
         get {
             return frame.origin.x
         }
@@ -56,7 +56,7 @@ public extension UIView {
     }
     
     // bottom of view
-    public var bottom: CGFloat {
+    @objc public var bottom: CGFloat {
         get {
             return frame.origin.y + frame.size.height
         }
@@ -66,7 +66,7 @@ public extension UIView {
     }
     
     // right of view
-    public var right: CGFloat {
+    @objc public var right: CGFloat {
         get {
             return frame.origin.x + frame.size.width
         }
@@ -76,7 +76,7 @@ public extension UIView {
     }
     
     // border color of view
-    @IBInspectable public var borderColor: UIColor? {
+    @objc @IBInspectable public var borderColor: UIColor? {
         get {
             guard let color = layer.borderColor else { return nil }
             return UIColor(cgColor: color)
@@ -93,7 +93,7 @@ public extension UIView {
     }
 
     // border width of view
-    @IBInspectable public var borderWidth: CGFloat {
+    @objc @IBInspectable public var borderWidth: CGFloat {
         get {
             return layer.borderWidth
         }
@@ -103,7 +103,7 @@ public extension UIView {
     }
     
     // corner radius of view
-    @IBInspectable public var cornerRadius: CGFloat {
+    @objc @IBInspectable public var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -114,7 +114,7 @@ public extension UIView {
     }
     
     // shadow color of view
-    @IBInspectable public var shadowColor: UIColor? {
+    @objc @IBInspectable public var shadowColor: UIColor? {
         get {
             guard let color = layer.shadowColor else { return nil }
             return UIColor(cgColor: color)
@@ -125,7 +125,7 @@ public extension UIView {
     }
     
     // shadow offset of view
-    @IBInspectable public var shadowOffset: CGSize {
+    @objc @IBInspectable public var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
         }
@@ -135,7 +135,7 @@ public extension UIView {
     }
     
     // shadow opacity of view
-    @IBInspectable public var shadowOpacity: Float {
+    @objc @IBInspectable public var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         }
@@ -145,7 +145,7 @@ public extension UIView {
     }
     
     // shadow radius of view
-    @IBInspectable public var shadowRadius: CGFloat {
+    @objc @IBInspectable public var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         }
@@ -156,11 +156,11 @@ public extension UIView {
 }
 
 // MARK: - Methods
-public extension UIView {
+@objc public extension UIView {
     /// - Parameters:
     ///   - corners: array of corners to change (example: [.bottomLeft, .topRight]).
     ///   - radius: radius for selected corners.
-    public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+    @objc public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let maskPath = UIBezierPath(
             roundedRect: bounds,
             byRoundingCorners: corners,
@@ -172,7 +172,7 @@ public extension UIView {
     }
     
     // take screenshots of view
-    public var screenshot: UIImage? {
+    @objc public var screenshot: UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
         defer {
             UIGraphicsEndImageContext()
@@ -183,7 +183,7 @@ public extension UIView {
     }
     
     // shake view
-    func shake() {
+    @objc public func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         animation.duration = 0.6

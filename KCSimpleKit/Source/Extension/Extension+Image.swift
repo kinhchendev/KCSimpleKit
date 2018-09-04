@@ -8,8 +8,8 @@
 
 import Foundation
 
-public extension UIImageView {
-    public func imageFromServerURL(urlString: String) {
+@objc public extension UIImageView {
+    @objc public func imageFromServerURL(urlString: String) {
         let nsStr : NSString = urlString as NSString
         let escapeString = nsStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
@@ -29,13 +29,13 @@ public extension UIImageView {
     }
 }
 
-public extension UIImage {
-    public static func imageFromBase64String(str : String) -> UIImage? {
+@objc public extension UIImage {
+    @objc public static func imageFromBase64String(str : String) -> UIImage? {
         let imageData = Data(base64Encoded: str, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)!
         return UIImage(data: imageData) ?? nil
     }
     
-    public static func image(fromURL url : String?, completion : @escaping ((UIImage?) -> (Void))) {
+    @objc public static func image(fromURL url : String?, completion : @escaping ((UIImage?) -> (Void))) {
         guard let u = url, let downloadURL = URL(string: u) else {
             completion(nil)
             return
@@ -54,8 +54,8 @@ public extension UIImage {
     }
 }
 
-public extension UIImage {
-    func maskWithColor(color: UIColor) -> UIImage? {
+@objc public extension UIImage {
+    @objc func maskWithColor(color: UIColor) -> UIImage? {
         let maskImage = cgImage!
         
         let width = size.width

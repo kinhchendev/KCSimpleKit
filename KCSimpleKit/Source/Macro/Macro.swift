@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class Macro: NSObject {
+@objc public class Macro: NSObject {
 // MARK: Timer
     public static func invalidateTimer(timer : inout Timer?) -> Void {
         if timer != nil {
